@@ -1,5 +1,16 @@
 # Bolt
 
+> ⚠️ **Personal project — not an official or vetted QGIS plugin.**
+> Bolt is shared here as a personal, non-commercial, educational tool. It is
+> **not** published on the QGIS plugin repository and has not been reviewed by
+> anyone. It connects to the **Blitzortung.org** network, whose data is reserved
+> for project **participants** and for **private, non-commercial** use. **If you
+> install Bolt, you are responsible for reviewing and complying with
+> [Blitzortung's terms](https://www.blitzortung.org/)** — and are encouraged to
+> [contribute a station](https://www.blitzortung.org/en/cover_your_area.php) to
+> the network. Bolt is not affiliated with or endorsed by Blitzortung.org, and is
+> **not** for storm-warning, overvoltage, or risk-analysis use.
+
 Watch **live lightning detections** on your map. Bolt streams real-time
 **detections from the Blitzortung.org volunteer sensor network** into QGIS and
 shows them flash onto the map as they happen, then fade over a minute — track
@@ -33,19 +44,27 @@ Detections come from the **[Blitzortung.org](https://www.blitzortung.org/)**
 volunteer network — a community of operators running receivers around the world.
 Bolt keeps the attribution visible in its panel.
 
-**Please read Blitzortung's terms before relying on or sharing this data.**
-Blitzortung's raw data is intended for **project participants** (station
-operators) and for **private, non-commercial** use; redistribution to third
-parties is restricted without their explicit permission. Bolt is non-commercial
-and keeps attribution visible, but it is your responsibility to use the feed
-within Blitzortung's terms. This is volunteer-run infrastructure — please respect
-the community.
+**Please read Blitzortung's terms before installing or using Bolt.** Blitzortung
+reserves raw-data access for **project participants** and for **private,
+non-commercial** use, and their policy for external projects asks that
+applications retrieve data from a **separate server**, not directly from
+Blitzortung's own servers. Bolt connects directly, so it is offered here as a
+**personal / reference tool only** — not as a distributed product and not on the
+QGIS plugin repository. All data remains under **CC BY-SA 4.0**; Bolt keeps the
+attribution visible. This is volunteer-run infrastructure — please respect the
+community and consider running a station.
 
 ## Install
 
-1. Download this repository as a ZIP (or clone it).
-2. In QGIS: **Plugins → Manage and Install Plugins → Install from ZIP**, and select the zipped `bolt/` folder, or copy `bolt/` into your QGIS plugins directory.
+Bolt is **not** on the QGIS plugin repository (see the note at the top). To try
+it for personal use:
+
+1. Download **`Bolt.zip`** from this repository (or clone it and zip the `bolt/` folder).
+2. In QGIS: **Plugins → Manage and Install Plugins → Install from ZIP**, and select `Bolt.zip`.
 3. Enable **Bolt**. A **Bolt** panel appears on the right.
+
+By installing, you accept responsibility for using the Blitzortung feed within
+their terms.
 
 ## Usage
 

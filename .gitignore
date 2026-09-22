@@ -222,6 +222,6 @@ aisstream_key.txt
 *.key
 secrets.*
 
-# built plugin package
-/Wake.zip
+# built plugin package — Bolt.zip is intentionally committed for manual install
 *.zip
+!Bolt.zip
