@@ -1,0 +1,17 @@
+[general]
+name=Bolt
+qgisMinimumVersion=3.28
+qgisMaximumVersion=4.99
+description=Watch live lightning strikes on your map — global, in real time, in your map view or a drawn area.
+about=Bolt streams live lightning strikes into QGIS and shows them flash onto the map as they happen, then fade over a minute — track your current map view or draw an area to watch. Strikes come free and keyless from the Blitzortung.org volunteer lightning-detection network (data © Blitzortung.org contributors, for non-commercial use). Strikes are coloured by age (a bright flash that fades) and busy storms cluster into counted badges. Data is live only — Bolt does not replay history. It is the storm-side companion to Wake (marine vessels), Contrail (aircraft) and Zenith (satellites), built on the same live-tracking engine.
+version=0.1.0
+author=Peter Cotroneo
+email=peter.cotroneo.qgis@gmail.com
+tracker=https://github.com/PeterCotroneo/Bolt/issues
+repository=https://github.com/PeterCotroneo/Bolt
+homepage=https://github.com/PeterCotroneo/Bolt
+category=Plugins
+icon=icon.svg
+experimental=False
+deprecated=False
+tags=lightning,strike,storm,weather,blitzortung,live,realtime,thunderstorm,tracking
