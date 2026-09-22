@@ -22,6 +22,8 @@ from qgis.core import (
     QgsProject,
     QgsMarkerSymbol,
     QgsSvgMarkerSymbolLayer,
+    QgsSymbolLayer,
+    QgsProperty,
     QgsCategorizedSymbolRenderer,
     QgsRendererCategory,
     QgsPointClusterRenderer,
@@ -118,6 +120,19 @@ class StrikeStore:
                 cluster.setToleranceUnit(Qgis.RenderUnit.Millimeters)
             except (AttributeError, TypeError):
                 pass
+            # Colour the cluster badge by the strikes it holds (@cluster_color)
+            # instead of a fixed red, so a cluster reads as recent/fading/old too.
+            # Dark outline + dark count keep it legible on the light badges.
+            csym = cluster.clusterSymbol()
+            if csym is not None and csym.symbolLayerCount() >= 1:
+                circle = csym.symbolLayer(0)
+                circle.setDataDefinedProperty(
+                    QgsSymbolLayer.Property.FillColor,
+                    QgsProperty.fromExpression("@cluster_color"))
+                if hasattr(circle, "setStrokeColor"):
+                    circle.setStrokeColor(QColor("#333333"))
+                if csym.symbolLayerCount() >= 2:
+                    csym.symbolLayer(1).setColor(QColor("#111111"))
             layer.setRenderer(cluster)
         except Exception as exc:  # noqa: BLE001 - styling must never block data
             QgsMessageLog.logMessage(f"styling skipped: {exc}", "Bolt",
