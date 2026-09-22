@@ -126,6 +126,13 @@ class StrikeStore:
             csym = cluster.clusterSymbol()
             if csym is not None and csym.symbolLayerCount() >= 1:
                 circle = csym.symbolLayer(0)
+                # A same-age cluster takes its strikes' bolt colour (@cluster_color).
+                # A MIXED-age cluster can't resolve one colour, so it falls back to
+                # the badge's own fill: set that to the freshest colour (white), not
+                # red. An active storm is exactly the mixed case (fresh strikes land
+                # on older ones), so it should read hot/white and cool white→red as
+                # it dies — never the inverted red-while-active it showed before.
+                circle.setColor(QColor(CATEGORY_COLORS[0][1]))
                 circle.setDataDefinedProperty(
                     QgsSymbolLayer.Property.FillColor,
                     QgsProperty.fromExpression("@cluster_color"))
