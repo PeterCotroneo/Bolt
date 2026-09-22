@@ -46,22 +46,25 @@ _MAP_TIP = (
     "[% \"stations\" %] detectors reported it"
 )
 
-# age bucket -> colour (newest to oldest; also the legend order)
-CATEGORY_COLORS = [
-    ("Just struck", "#ffffff"),
-    ("Recent", "#ffd400"),
-    ("Fading", "#ff8c00"),
-    ("Old", "#c62828"),
+# Age scheme (single source of truth): (upper-bound seconds since the strike was
+# received, legend label, colour). A strike flashes white, warms to yellow/orange,
+# dims to red, then expires. Labels carry the range so the legend is self-explaining.
+_AGE_SCHEME = [
+    (8,  "Just struck (0–8s)", "#ffffff"),
+    (25, "Recent (8–25s)",     "#ffd400"),
+    (45, "Fading (25–45s)",    "#ff8c00"),
+    (60, "Old (45–60s)",       "#c62828"),
 ]
-_AGE_BUCKETS = [(8, "Just struck"), (25, "Recent"), (45, "Fading")]
-MAX_AGE = 60.0   # strikes fade out after this many seconds
+MAX_AGE = float(_AGE_SCHEME[-1][0])   # strikes fade out after this many seconds
+_FIRST_BUCKET = _AGE_SCHEME[0][1]
+CATEGORY_COLORS = [(label, color) for _lim, label, color in _AGE_SCHEME]
 
 
 def _bucket(elapsed):
-    for limit, name in _AGE_BUCKETS:
+    for limit, label, _color in _AGE_SCHEME:
         if elapsed < limit:
-            return name
-    return "Old"
+            return label
+    return _AGE_SCHEME[-1][1]
 
 
 class StrikeStore:
@@ -159,7 +162,7 @@ class StrikeStore:
                 struck = ""
         self._records[sid] = {
             "lat": lat, "lon": lon, "struck": struck,
-            "stations": s.get("stations", 0), "_t": now, "_bucket": "Just struck",
+            "stations": s.get("stations", 0), "_t": now, "_bucket": _FIRST_BUCKET,
         }
         self._pending_new.add(sid)
 
