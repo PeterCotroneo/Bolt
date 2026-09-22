@@ -56,15 +56,17 @@ community and consider running a station.
 
 ## Install
 
-Bolt is **not** on the QGIS plugin repository (see the note at the top). To try
-it for personal use:
+Bolt is **not** on the QGIS plugin repository and is not distributed as a
+packaged download (see the note at the top). To try it for personal use, build
+it from source:
 
-1. Download **`Bolt.zip`** from this repository (or clone it and zip the `bolt/` folder).
-2. In QGIS: **Plugins → Manage and Install Plugins → Install from ZIP**, and select `Bolt.zip`.
-3. Enable **Bolt**. A **Bolt** panel appears on the right.
+1. Clone this repository (or use **Code → Download ZIP** on GitHub).
+2. Zip the inner **`bolt/`** folder, so the archive contains `bolt/` at its top level.
+3. In QGIS: **Plugins → Manage and Install Plugins → Install from ZIP**, and select that zip — or copy the `bolt/` folder into your QGIS plugins directory.
+4. Enable **Bolt**. A **Bolt** panel appears on the right.
 
-By installing, you accept responsibility for using the Blitzortung feed within
-their terms.
+By building and installing it, you accept responsibility for using the
+Blitzortung feed within their terms.
 
 ## Usage
 
