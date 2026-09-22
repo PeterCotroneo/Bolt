@@ -212,14 +212,6 @@ class BoltPlugin:
         btn_clear.clicked.connect(self.log_view.clear)
         log_layout.addWidget(btn_clear)
         layout.addWidget(log_box)
-
-        attribution = QLabel(
-            "Lightning data © <a href='https://www.blitzortung.org/'>"
-            "Blitzortung.org</a> contributors (non-commercial use).")
-        attribution.setWordWrap(True)
-        attribution.setOpenExternalLinks(True)
-        attribution.setStyleSheet("color: gray; font-size: 11px;")
-        layout.addWidget(attribution)
         layout.addStretch(1)
 
         clear_sinks()
