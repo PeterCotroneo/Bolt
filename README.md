@@ -1,9 +1,9 @@
 # Bolt
 
-Watch **live lightning strikes** on your map. Bolt streams real-time lightning
-into QGIS and shows strikes flash onto the map as they happen, then fade over a
-minute — track your current map view, or draw an area to watch. Live only; no
-history replay.
+Watch **live lightning detections** on your map. Bolt streams real-time
+**detections from the Blitzortung.org volunteer sensor network** into QGIS and
+shows them flash onto the map as they happen, then fade over a minute — track
+your current map view, or draw an area to watch. Live only; no history replay.
 
 Bolt is one of four sibling plugins built on the same live-tracking engine — a
 pluggable data-source layer, a moving/expiring-point map layer, clustering and
@@ -14,26 +14,32 @@ identify — covering **sea, sky, space and storms**:
 - [Zenith](https://github.com/PeterCotroneo/Zenith) — satellites (SGP4)
 - **Bolt** — lightning (this one)
 
+![Bolt showing live lightning detections over the Caribbean and Gulf, clustered and coloured by age](docs/img/01-caribbean-storms.jpg)
+
 ## Features
 
-- **Real-time and global** — strikes appear as they are detected, anywhere on Earth.
+- **Live detections** — lightning **detections** from the Blitzortung sensor network appear as they are reported, in near real time.
 - **Free and keyless** — no account, no API key.
-- **Age-coloured** — each strike flashes bright, then fades yellow → orange → dim over about a minute, so the map shows where storms are active *right now*.
-- **Area-based** — watch your map view or a drawn box; strikes outside it are dropped.
-- **Cluster badges** — busy storm cells collapse into a counted marker; zoom in and they fan out.
-- **Identify** a strike for its time and the number of detectors that reported it.
-- **No extra dependencies** — uses Qt's built-in WebSocket, so it installs cleanly from the QGIS plugin repository.
+- **Age-coloured** — each detection flashes bright, then fades white → yellow → orange → red over about a minute, so the map shows where storms are active *right now*.
+- **Cluster badges** — busy storm cells collapse into a counted marker, coloured by the freshest detection; zoom in and they fan out.
+- **Coverage-aware** — these are *detections*, not ground truth. An area with no markers may mean **no lightning** *or* **no sensor coverage** there. Coverage is best where operators are dense (Europe, North America, Japan, Australia) and thinner elsewhere.
+- **Click for detail** — Identify any detection for its time (UTC) and how many detectors reported it.
+- **Area-based** — watch your map view or a drawn box; detections outside it are dropped.
+- **No extra dependencies** — uses Qt's built-in WebSocket, so it installs cleanly.
 
-## Data source and attribution
+## Data source, attribution and terms
 
-Lightning comes from the **[Blitzortung.org](https://www.blitzortung.org/)**
-volunteer lightning-detection network — a community of operators running
-receivers around the world. The data is **free for non-commercial use**, and
+Detections come from the **[Blitzortung.org](https://www.blitzortung.org/)**
+volunteer network — a community of operators running receivers around the world.
 Bolt keeps the attribution visible in its panel.
 
-Please respect Blitzortung's community: this is volunteer-run infrastructure.
-Coverage is best where operators are dense (Europe, North America, Japan,
-Australia) and thinner elsewhere.
+**Please read Blitzortung's terms before relying on or sharing this data.**
+Blitzortung's raw data is intended for **project participants** (station
+operators) and for **private, non-commercial** use; redistribution to third
+parties is restricted without their explicit permission. Bolt is non-commercial
+and keeps attribution visible, but it is your responsibility to use the feed
+within Blitzortung's terms. This is volunteer-run infrastructure — please respect
+the community.
 
 ## Install
 
